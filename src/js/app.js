@@ -15,7 +15,8 @@ App = {
         petTemplate.find('.pet-age').text(data[i].age);
         petTemplate.find('.pet-location').text(data[i].location);
         petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-
+		//petTemplate.find('.download').hide();
+		
         petsRow.append(petTemplate.html());
       }
     });
@@ -99,6 +100,17 @@ App = {
         // 发送交易领养宠物
         return adoptionInstance.adopt(petId, {from: account});
       }).then(function(result) {
+		//$('.panel-pet').eq(petId).find('.download').attr("href","/images/"+i+".mp3"); 
+		//$('.panel-pet').eq(petId).find('.download').show();
+		var r=confirm("进行下载音乐？")
+		if (r==true)
+		{
+			window.open("/images/"+petId+".mp3")
+		}
+		else
+		{
+			document.write("记得下载音乐哟！")
+		}
         return App.markAdopted();
       }).catch(function(err) {
         console.log(err.message);
