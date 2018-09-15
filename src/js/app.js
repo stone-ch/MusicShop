@@ -78,6 +78,8 @@ App = {
     });
 
   },
+  
+
 
   handleAdopt: function(event) {
     event.preventDefault();
@@ -105,7 +107,8 @@ App = {
 		var r=confirm("进行下载音乐？")
 		if (r==true)
 		{
-			window.open("/images/"+petId+".mp3")
+			$.getJSON('../pets.json', function(data) {window.open("/audios/"+data[petId].name+".mp3")});
+			//window.open("/audios/"+petId+".mp3")
 		}
 		else
 		{
